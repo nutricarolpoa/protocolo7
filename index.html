@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Protocolo 7 | Corpo Leve</title>
+  <meta name="description" content="Protocolo 7 dias para desinchar e organizar o corpo com orientação, sem radicalismo. Acesso imediato pelo WhatsApp." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#e9dec8;
+      --card:#ffffff;
+      --soft:#fbf8f3;
+      --stroke:#a89889;
+      --text:#241f1a;
+      --muted:#6a5a50;
+      --brand:#7c573d;
+
+      /* status online */
+      --online:#6f8f6b;
+
+      /* sombras premium (camadas) */
+      --sh-soft: 0 10px 26px rgba(0,0,0,.06);
+      --sh-mid:  0 18px 46px rgba(0,0,0,.10);
+      --sh-strong: 0 26px 70px rgba(0,0,0,.14);
+
+      /* brilho de borda (efeito material) */
+      --edge: rgba(255,255,255,.55);
+      --edge2: rgba(124,87,61,.10);
+
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1100px 560px at 18% 0%, rgba(255,255,255,.60), transparent 62%),
+        radial-gradient(980px 560px at 86% 10%, rgba(255,255,255,.38), transparent 60%),
+        linear-gradient(180deg, var(--bg), rgba(233,222,200,.88));
+    }
+
+    .wrap{
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 26px 18px 86px;
+    }
+
+    /* Top */
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .brand .name{
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      font-size: 12px;
+    }
+    .brand .role{
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(36,31,26,.62);
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,87,61,.22);
+      background: rgba(255,255,255,.55);
+      color: rgba(36,31,26,.78);
+      font-weight: 700;
+      font-size: 12px;
+      box-shadow: var(--sh-soft);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      white-space: nowrap;
+      position: relative;
+    }
+    .chip:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: 999px;
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.8;
+    }
+
+    /* bolinha online */
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: var(--online);
+      box-shadow:
+        0 0 0 3px rgba(111,143,107,.22),
+        0 8px 18px rgba(111,143,107,.12);
+      border: 1px solid rgba(111,143,107,.35);
+    }
+
+    /* Hero */
+    .hero{
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(168,152,137,.55);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--sh-mid);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(760px 280px at 18% 0%, rgba(124,87,61,.14), transparent 62%),
+        radial-gradient(700px 260px at 88% 12%, rgba(255,255,255,.40), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero:after{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.7;
+    }
+
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 0;
+      position:relative;
+      z-index:1;
+    }
+    @media (max-width: 960px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .heroLeft{
+      padding: 34px 34px 28px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(36,31,26,.78);
+      margin-bottom: 14px;
+    }
+    .kicker span{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,87,61,.24);
+      background: rgba(124,87,61,.07);
+      color: var(--brand);
+      letter-spacing:.14em;
+      box-shadow: 0 10px 24px rgba(124,87,61,.06);
+    }
+
+    h1{
+      margin:0;
+      font-family: "Fraunces", serif;
+      font-weight: 650;
+      font-size: clamp(36px, 4.8vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+    }
+    h1 .accent{ color: var(--brand); }
+
+    .sub{
+      margin-top: 14px;
+      max-width: 72ch;
+      font-size: 17px;
+      line-height: 1.78;
+      color: rgba(36,31,26,.72);
+    }
+
+    .benefits{
+      margin-top: 18px;
+      display:grid;
+      gap: 12px;
+      max-width: 70ch;
+    }
+    .benefit{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(168,152,137,.52);
+      background: rgba(251,248,243,.96);
+      box-shadow: 0 10px 22px rgba(0,0,0,.04);
+      position: relative;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .benefit:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-lg);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.75;
+    }
+    @media (hover:hover){
+      .benefit:hover{
+        transform: translateY(-1px);
+        box-shadow: 0 16px 36px rgba(0,0,0,.06);
+      }
+    }
+
+    .ico{
+      width: 28px; height: 28px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(124,87,61,.10);
+      border: 1px solid rgba(124,87,61,.18);
+      color: var(--brand);
+      font-weight: 900;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      box-shadow: 0 10px 20px rgba(124,87,61,.08);
+    }
+    .benefit b{ color: rgba(36,31,26,.92); }
+    .benefit div{ color: rgba(36,31,26,.70); line-height:1.55; }
+
+    /* Right column */
+    .heroRight{
+      border-left: 1px solid rgba(168,152,137,.55);
+      background:
+        radial-gradient(520px 260px at 50% 0%, rgba(124,87,61,.12), transparent 62%),
+        linear-gradient(180deg, rgba(251,248,243,.96), rgba(255,255,255,.70));
+      padding: 26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+    }
+    .heroRight:after{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+      opacity:.7;
+    }
+    @media (max-width: 960px){
+      .heroRight{
+        border-left:none;
+        border-top: 1px solid rgba(168,152,137,.55);
+      }
+    }
+
+    .buy{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(168,152,137,.58);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      box-shadow: var(--sh-soft);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position:relative;
+    }
+    .buy:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow:
+        inset 0 1px 0 var(--edge),
+        inset 0 0 0 1px rgba(124,87,61,.06);
+      opacity:.9;
+    }
+    @media (hover:hover){
+      .buy:hover{ box-shadow: var(--sh-mid); }
+    }
+
+    .buyTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      position:relative;
+      z-index:1;
+    }
+    .buyTop h2{
+      margin:0;
+      font-family:"Fraunces", serif;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .miniPrice{
+      text-align:right;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: .04em;
+    }
+    .miniPrice small{
+      display:block;
+      font-weight: 600;
+      color: rgba(36,31,26,.60);
+      letter-spacing: 0;
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .proto7{
+      width:100%;
+      text-align:center;
+      padding: 14px 14px;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--brand);
+      background: #fff;
+      color: var(--brand);
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-size: 20px;
+      margin: 10px 0 10px;
+      box-shadow: 0 12px 28px rgba(124,87,61,.10);
+      position:relative;
+      z-index:1;
+    }
+
+    .btn{
+      display:flex;
+      width:100%;
+      justify-content:center;
+      align-items:center;
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      background: var(--brand);
+      color:#fff;
+      text-decoration:none;
+      font-weight: 800;
+      box-shadow: 0 18px 40px rgba(124,87,61,.26);
+      transition: transform .10s ease, filter .10s ease, box-shadow .10s ease;
+      position:relative;
+      z-index:1;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 22px 52px rgba(124,87,61,.30); }
+    .btn:active{ transform: translateY(0px); }
+
+    .fine{
+      margin-top: 10px;
+      color: rgba(36,31,26,.62);
+      font-size: 12.5px;
+      line-height: 1.55;
+      position:relative;
+      z-index:1;
+    }
+
+    /* Sections */
+    .sections{
+      margin-top: 18px;
+      display:grid;
+      gap: 16px;
+    }
+
+    .section{
+      background: rgba(255,255,255,.84);
+      border: 1px solid rgba(168,152,137,.55);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--sh-soft);
+      padding: 22px;
+      position:relative;
+    }
+    .section:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow:
+        inset 0 1px 0 var(--edge),
+        inset 0 0 0 1px rgba(124,87,61,.05);
+      opacity:.85;
+    }
+    @media (hover:hover){
+      .section:hover{ box-shadow: var(--sh-mid); transform: translateY(-1px); }
+      .section{ transition: transform .14s ease, box-shadow .14s ease; }
+    }
+
+    .section h2, .section p, .cols, details, .proofGrid, footer{ position:relative; z-index:1; }
+
+    .section h2{
+      margin:0 0 10px;
+      font-family:"Fraunces", serif;
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.01em;
+    }
+    .section p{
+      margin:0;
+      color: rgba(36,31,26,.70);
+      line-height: 1.78;
+      font-size: 15.8px;
+      max-width: 92ch;
+    }
+
+    .cols{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 960px){ .cols{ grid-template-columns:1fr; } }
+
+    .mini{
+      background: rgba(251,248,243,.96);
+      border: 1px solid rgba(168,152,137,.52);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.05);
+      position:relative;
+    }
+    .mini:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.75;
+    }
+    .mini h3, .mini ul{ position:relative; z-index:1; }
+
+    .mini h3{
+      margin:0 0 10px;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--brand);
+      font-weight: 800;
+    }
+    .mini ul{
+      margin:0;
+      padding-left: 18px;
+      color: rgba(36,31,26,.70);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    /* Proofs */
+    .proofGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 960px){ .proofGrid{ grid-template-columns:1fr; } }
+
+    .proofBox{
+      background: rgba(251,248,243,.96);
+      border: 1px solid rgba(168,152,137,.52);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.05);
+      position:relative;
+    }
+    .proofBox:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.78;
+    }
+    .proof, .proofBox .fine{ position:relative; z-index:1; }
+
+    .proof{
+      background:#fff;
+      border: 1px solid rgba(168,152,137,.62);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      position:relative;
+    }
+    .proof:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-lg);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.75;
+    }
+    .proofTop, .proof p{ position:relative; z-index:1; }
+
+    .proofTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .proofTop .nm{ font-weight: 800; }
+    .proofTop .kg{ font-weight: 800; color: var(--brand); }
+    .proof p{
+      margin: 6px 0 0;
+      color: rgba(36,31,26,.70);
+      line-height: 1.65;
+      font-size: 14.7px;
+    }
+
+    /* FAQ */
+    details{
+      background: rgba(251,248,243,.96);
+      border: 1px solid rgba(168,152,137,.52);
+      border-radius: var(--radius-xl);
+      padding: 14px 16px;
+      margin-top: 10px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.05);
+      position:relative;
+    }
+    details:before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--radius-xl);
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.75;
+    }
+    summary, details p{ position:relative; z-index:1; }
+    summary{ cursor:pointer; font-weight: 800; color: rgba(36,31,26,.90); }
+    details p{
+      margin: 10px 0 0;
+      color: rgba(36,31,26,.70);
+      line-height: 1.78;
+      font-size: 15px;
+    }
+
+    /* Bottom CTA */
+    .bottomCTA{
+      margin-top: 16px;
+      background:
+        radial-gradient(780px 260px at 24% 0%, rgba(124,87,61,.14), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(251,248,243,.92));
+      border: 1px solid rgba(124,87,61,.28);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--sh-mid);
+      padding: 22px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .bottomCTA:before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 var(--edge);
+      opacity:.75;
+    }
+    .bottomCTA h2, .bottomCTA p, .bottomCTA .btn, .bottomCTA .fine{ position:relative; z-index:1; }
+    .bottomCTA h2{
+      margin:0 0 8px;
+      font-family:"Fraunces", serif;
+      font-weight: 600;
+      font-size: 30px;
+      letter-spacing: -0.01em;
+    }
+    .bottomCTA p{
+      margin:0 auto 14px;
+      max-width: 78ch;
+      color: rgba(36,31,26,.70);
+      line-height: 1.78;
+      font-size: 15.6px;
+    }
+
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(36,31,26,.62);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* Sticky CTA on mobile */
+    .sticky{
+      position: fixed;
+      left: 12px; right: 12px; bottom: 12px;
+      display:none;
+      z-index: 50;
+    }
+    .sticky a{
+      display:block;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(124,87,61,.96);
+      color:#fff;
+      text-decoration:none;
+      font-weight: 800;
+      text-align:center;
+      box-shadow:
+        0 22px 60px rgba(124,87,61,.28),
+        0 10px 24px rgba(0,0,0,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .sticky a:before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+      opacity:.9;
+    }
+
+    @media (max-width: 700px){
+      .sticky{ display:block; }
+      .wrap{ padding-bottom: 120px; }
+    }
+
+    /* melhora leitura em telas pequenas */
+    @media (max-width: 520px){
+      .heroLeft{ padding: 28px 22px 22px; }
+      .heroRight{ padding: 22px; }
+      .section{ padding: 18px; }
+      .section h2{ font-size: 24px; }
+      .sub{ font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="top">
+      <div class="brand">
+        <div class="name">ANA CAROLINE</div>
+        <div class="role">NUTRICIONISTA</div>
+      </div>
+      <div class="chip"><span class="dot"></span> Acesso imediato no WhatsApp</div>
+    </div>
+
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="heroLeft">
+          <div class="kicker"><span>PROTOCOLO 7 DIAS</span> começo possível • sem radicalismo</div>
+
+          <h1>
+            Corpo mais leve,
+            <span class="accent">rotina mais fácil</span>
+          </h1>
+
+          <p class="sub">
+            Se tu já tentou “comer melhor” e mesmo assim segue inchada, pesada e travada,
+            o problema não é falta de força de vontade.
+            O problema é tentar resolver tudo ao mesmo tempo, sem direção.
+          </p>
+
+          <div class="benefits">
+            <div class="benefit">
+              <div class="ico">✓</div>
+              <div><b>Desinchar e eliminar retenção</b><br>passos simples pra o corpo voltar a responder</div>
+            </div>
+            <div class="benefit">
+              <div class="ico">✓</div>
+              <div><b>Rotina possível</b><br>sem cardápio impossível e sem terrorismo alimentar</div>
+            </div>
+            <div class="benefit">
+              <div class="ico">✓</div>
+              <div><b>Recomeço real</b><br>voltar a se cuidar sem “tudo ou nada”</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="buy">
+            <div class="buyTop">
+              <h2>Começar agora</h2>
+              <div class="miniPrice">
+                R$ 37,90
+                <small>Entrega no WhatsApp</small>
+              </div>
+            </div>
+
+            <div class="proto7">PROTOCOLO 7</div>
+
+            <a class="btn"
+               href="https://wa.me/5551998673867?text=Quero%20o%20Protocolo%207%20agora%20e%20iniciar%20minha%20mudan%C3%A7a"
+               target="_blank" rel="noopener">
+              Quero começar agora
+            </a>
+
+            <div class="fine">
+              Conteúdo educativo. Não substitui consulta nutricional.
+              Resultados variam e podem envolver redução de retenção e desorganização alimentar.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sections">
+
+      <section class="section">
+        <h2>O que tu recebe</h2>
+        <p>
+          Um passo a passo guiado pra tu aplicar por 7 dias, sem confusão.
+          É o tipo de começo que eu uso com minhas pacientes: básico bem feito e rotina possível.
+        </p>
+
+        <div class="cols">
+          <div class="mini">
+            <h3>inclui</h3>
+            <ul>
+              <li>Roteiro claro de 7 dias</li>
+              <li>Checklist simples pra tu não se perder</li>
+              <li>Orientações práticas de refeições e lanches</li>
+              <li>Ajustes do que fazer quando o corpo “trava”</li>
+            </ul>
+          </div>
+
+          <div class="mini">
+            <h3>não é</h3>
+            <ul>
+              <li>Consulta individual</li>
+              <li>Tratamento clínico</li>
+              <li>Plano alimentar personalizado</li>
+              <li>Promessa de milagre</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Resultados reais</h2>
+        <p>
+          Pequenas mudanças bem aplicadas fazem o corpo responder.
+          E a maior virada geralmente não é só o número na balança, é a pessoa voltar a se cuidar.
+        </p>
+
+        <div class="proofGrid">
+          <div class="proofBox">
+            <div class="proof">
+              <div class="proofTop">
+                <div class="nm">Ariane</div>
+                <div class="kg">−3,6 kg</div>
+              </div>
+              <p>Desinchou, destravou o corpo e voltou a se cuidar depois de semanas estagnada.</p>
+            </div>
+
+            <div class="proof">
+              <div class="proofTop">
+                <div class="nm">Vera</div>
+                <div class="kg">−1,9 kg</div>
+              </div>
+              <p>Reduziu retenção, diminuiu o inchaço diário e parou de oscilar tanto o peso.</p>
+            </div>
+
+            <div class="proof" style="margin-bottom:0;">
+              <div class="proofTop">
+                <div class="nm">Samanta</div>
+                <div class="kg">−1,6 kg</div>
+              </div>
+              <p>Organizou a rotina e diminuiu aquela fome sem controle no fim do dia.</p>
+            </div>
+
+            <div class="fine" style="margin-top:10px;">
+              Resultados variam. Parte da perda inicial pode envolver redução de retenção e inflamação.
+            </div>
+          </div>
+
+          <div class="mini">
+            <h3>pra quem é</h3>
+            <ul>
+              <li>pra quem acorda inchada e vai dormir pesada</li>
+              <li>pra quem começa e para por falta de direção</li>
+              <li>pra quem quer um começo possível na vida real</li>
+              <li>pra quem quer sentir o corpo responder sem extremismo</li>
+            </ul>
+
+            <div style="height:12px"></div>
+
+            <h3>pra quem não é</h3>
+            <ul>
+              <li>pra quem quer cardápio engessado</li>
+              <li>pra quem quer “resultado em 3 dias”</li>
+              <li>pra quem não quer ajustar hábitos</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Perguntas rápidas</h2>
+
+        <details>
+          <summary>Como eu recebo?</summary>
+          <p>Tu clica no botão e recebe o acesso e orientações pelo WhatsApp.</p>
+        </details>
+
+        <details>
+          <summary>Isso substitui consulta?</summary>
+          <p>Não. Consulta é individual, com histórico, rotina, exames, estratégia personalizada e acompanhamento.</p>
+        </details>
+
+        <details>
+          <summary>Vou precisar comprar coisa cara?</summary>
+          <p>Não. A proposta é funcionar com comida simples e rotina possível.</p>
+        </details>
+      </section>
+
+      <section class="bottomCTA">
+        <h2>Quer fazer dar certo dessa vez?</h2>
+        <p>
+          Se tu cansou de começar e desistir, tu não precisa de motivação.
+          Tu precisa de um caminho claro e possível.
+          Clica abaixo e começa hoje.
+        </p>
+
+        <a class="btn"
+           href="https://wa.me/5551998673867?text=Quero%20o%20Protocolo%207%20agora%20e%20iniciar%20minha%20mudan%C3%A7a"
+           target="_blank" rel="noopener">
+          Sim, eu quero começar agora
+        </a>
+
+        <div class="fine" style="margin-top:12px;">
+          R$ 37,90 • Acesso imediato • Conteúdo educativo
+        </div>
+      </section>
+
+      <footer>
+        Ana Caroline Oliveira • @nutricarolpoa<br>
+        Conteúdo educativo. Não substitui acompanhamento individual.
+      </footer>
+
+    </div>
+  </div>
+
+  <div class="sticky">
+    <a href="https://wa.me/5551998673867?text=Quero%20o%20Protocolo%207%20agora%20e%20iniciar%20minha%20mudan%C3%A7a" target="_blank" rel="noopener">
+      Começar agora • R$ 37,90
+    </a>
+  </div>
+</body>
+</html>
